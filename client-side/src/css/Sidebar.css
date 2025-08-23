@@ -1,0 +1,145 @@
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #f0e6dc;
+  color: #fff8e1;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 15px;
+  background: #f0e6dc;
+}
+
+.sidebar.collapsed .sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px 15px 15px;
+  background: #f0e6dc;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #4b3621;
+}
+
+.sidebar.collapsed .logo-text {
+  display: none;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #4b3621;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0px !important;
+}
+
+/* Menu */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0px;
+}
+
+nav ul li {
+  margin: 10px 0;
+}
+
+nav ul li a {
+  color: #4b3621;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed nav ul li a {
+  justify-content: center;
+}
+
+nav ul li a:hover {
+  background: #c19a6b;
+  color: #fff;
+  border-radius: 8px;
+}
+
+nav ul li i {
+  font-size: 18px;
+  width: 25px;
+  text-align: center;
+}
+
+nav ul li span {
+  margin-left: 10px;
+}
+
+.sidebar.collapsed nav ul li span {
+  display: none;
+}
+
+/* biar logout nempel bawah */
+.sidebar-footer {
+  border-top: 1px solid #ddd;
+}
+
+.sidebar-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-footer ul li span {
+  margin-left: 10px;
+}
+
+.sidebar-footer ul li i {
+  font-size: 18px;
+  width: 25px;
+  text-align: center;
+}
+.sidebar-footer li a {
+  color: #4b3621;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.sidebar-footer li a:hover {
+  background: #d4a373;
+  color: #fff;
+}
+
+.sidebar.collapsed .sidebar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px 15px 15px;
+  background: #f0e6dc;
+}
