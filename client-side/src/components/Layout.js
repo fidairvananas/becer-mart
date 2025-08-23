@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 import "../css/Layout.css";
 
 export default function Layout() {
@@ -9,6 +10,7 @@ export default function Layout() {
       <div className="layout">
         <Sidebar />
         <main className="content">
+          <Navbar />
           <Outlet />
         </main>
       </div>

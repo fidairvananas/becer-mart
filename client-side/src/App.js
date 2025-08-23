@@ -4,7 +4,7 @@ import store from "./redux/store";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import Product from "./pages/Product";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -21,7 +21,7 @@ function App() {
           {/* Protected Page */}
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
+              <Route index element={<Dashboard />} />
               <Route path="product" element={<Product />} />
             </Route>
           </Route>
