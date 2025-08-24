@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../api/apiAuth";
 
 const initialState = {
-  user: null,
+  businessName: null,
+  email: null,
   token: null,
   expiredAt: null,
   status: "idle",
@@ -13,11 +14,11 @@ export const login = createAsyncThunk(
   async ({ email, password }) => {
     // Panggil API login (contoh pakai axios)
     const res = await api.post("auth/login", { email, password });
-
     return {
-      user: res.data.email,
+      businessName: res.data.businessName,
+      email: res.data.email,
       token: res.data.access_token,
-      expiredAt: Date.now() + 5 * 60 * 1000, // 5 menit
+      expiredAt: Date.now() + 10 * 60 * 1000, // 5 menit
     };
   }
 );
@@ -27,7 +28,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      state.user = null;
+      state.businessName = null;
+      state.email = null;
       state.token = null;
       state.expiredAt = null;
       sessionStorage.removeItem("auth");
@@ -38,8 +40,9 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
-      const { user, token, expiredAt } = action.payload;
-      state.user = user;
+      const { businessName, email, token, expiredAt } = action.payload;
+      state.businessName = businessName;
+      state.email = email;
       state.token = token;
       state.expiredAt = expiredAt;
       state.status = "authenticated";

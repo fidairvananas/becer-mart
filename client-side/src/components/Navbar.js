@@ -6,17 +6,34 @@ import "../css/Navbar.css";
 export default function Navbar() {
   const location = useLocation();
   const [openMenu, setOpenMenu] = useState(false);
-  const user = useSelector((state) => state.auth.user);
+  const businessName = useSelector((state) => state.auth.businessName);
+
   const menuRef = useRef(null);
 
   const paths = location.pathname.split("/").filter(Boolean);
 
+  // mapping path ke label custom
+  const labelMap = {
+    dashboard: "Dashboard",
+    product: "Produk",
+    add: "Tambah Produk",
+    edit: "Edit Produk",
+    transaksi: "Transaksi",
+    // bisa tambah lagi sesuai kebutuhan
+  };
+
+  // helper capitalize
+  const capitalize = (str) =>
+    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
   const breadcrumb = paths.map((path, index) => {
     const url = "/" + paths.slice(0, index + 1).join("/");
+    const label = labelMap[path] || capitalize(path);
+
     return (
       <span key={index} className="breadcrumb">
-        <Link to={url}>{path}</Link>
-        {index < paths.length - 1 && " / "}
+        <Link to={url}>{label}</Link>
+        {index < paths.length - 1 && " > "}
       </span>
     );
   });
@@ -50,7 +67,7 @@ export default function Navbar() {
           onClick={() => setOpenMenu((prev) => !prev)}
         >
           <i className="fas fa-user-circle user-icon"></i>
-          <span>{user}</span>
+          <span>{businessName}</span>
         </button>
 
         {openMenu && (

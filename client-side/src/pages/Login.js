@@ -36,11 +36,11 @@ export default function Login() {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label>Kata sandi</label>
             <input
               type="password"
               value={password}
-              placeholder="Masukkan password anda"
+              placeholder="Masukkan kata sandi anda"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
