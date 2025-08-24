@@ -52,7 +52,14 @@ class UserController {
         if (checkPass) {
           const payload = { id: user.id, email: user.email };
           const access_token = signToken(payload);
-          res.status(200).json({ message: "Login successfull!", access_token });
+          res
+            .status(200)
+            .json({
+              message: "Login successfull!",
+              email,
+              businessName: user.businessName,
+              access_token,
+            });
         } else {
           throw {
             code: 401,
