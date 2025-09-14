@@ -3,19 +3,11 @@ const { Product, User, Category } = require("../../models");
 class ProductController {
   static getAllProduct = async (req, res, next) => {
     try {
+      const userLogin = req.userLogin;
       const result = await Product.findAll({
-        include: [
-          {
-            model: User,
-            as: "author",
-            attributes: ["id", "name"],
-          },
-          {
-            model: Category,
-            as: "category",
-            attributes: ["id", "name"],
-          },
-        ],
+        where: {
+          userId: userLogin.id,
+        },
       });
       res.status(200).json(result);
     } catch (error) {
@@ -53,20 +45,33 @@ class ProductController {
   static addProduct = async (req, res, next) => {
     try {
       const {
-        productCode,
-        productName,
+        code,
+        name,
         description,
+        priceBuy,
+        priceSell,
+        diskon,
         stock,
-        price,
+        unit,
+        expiryDate,
+        status,
         categoryId,
       } = req.body;
 
+      const user = req.userLogin;
+
       await Product.create({
-        productCode,
-        productName,
+        code,
+        name,
         description,
+        priceBuy,
+        priceSell,
+        diskon,
         stock,
-        price,
+        unit,
+        expiryDate,
+        status,
+        userId: user.id,
         categoryId,
       });
 

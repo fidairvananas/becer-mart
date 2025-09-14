@@ -18,7 +18,7 @@ export const login = createAsyncThunk(
       businessName: res.data.businessName,
       email: res.data.email,
       token: res.data.access_token,
-      expiredAt: Date.now() + 10 * 60 * 1000, // 5 menit
+      expiredAt: Date.now() + 100 * 60 * 1000, // 5 menit
     };
   }
 );

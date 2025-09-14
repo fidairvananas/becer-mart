@@ -1,8 +1,8 @@
+import "../css/Login.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
-import "../css/Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");

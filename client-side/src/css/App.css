@@ -1,1 +1,38 @@
+/* Tombol aksi */
+.btn-update,
+.btn-delete {
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
 
+.btn-update {
+  background: #3498db;
+  color: #fff;
+}
+
+.btn-update:hover {
+  background: #d7ccc8;
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #d7ccc8;
+  transform: scale(1.05);
+}
+
+/* Override Bootstrap .form-control focus */
+.form-control-sm :focus {
+  border: grey;
+  box-shadow: 0 0 0 0.1rem rgba(111, 78, 55, 0.25); /* efek glow */
+}

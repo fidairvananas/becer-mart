@@ -9,49 +9,87 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
       },
-      productCode: {
-        allowNull: false,
+      code: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
       },
-      productName: {
-        allowNull: false,
+      name: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       description: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      priceBuy: {
+        type: Sequelize.DECIMAL(15, 2),
         allowNull: false,
-        type: Sequelize.STRING,
+      },
+      priceSell: {
+        type: Sequelize.DECIMAL(15, 2),
+        allowNull: false,
+      },
+      diskon: {
+        type: Sequelize.DECIMAL(15, 2),
+        allowNull: true,
+      },
+      margin: {
+        type: Sequelize.DECIMAL(15, 2),
+        allowNull: true,
       },
       stock: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.NUMERIC,
+        defaultValue: 0,
       },
-      price: {
+      unit: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.NUMERIC,
+        defaultValue: "pcs",
       },
-      salePrice: {
-        type: Sequelize.NUMERIC,
+      expirydate: {
+        type: Sequelize.DATE,
+        allowNull: true,
       },
-      categoryId: {
+      status: {
+        type: Sequelize.ENUM("active", "inactive", "preorder"),
         allowNull: false,
+        defaultValue: "active",
+      },
+      userId: {
         type: Sequelize.UUID,
+        allowNull: false,
         references: {
-          model: "Categories",
+          model: "Users", // pastikan table User sudah ada
           key: "id",
         },
-        onUpdate: "cascade",
-        onDelete: "cascade",
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
+      },
+      categoryId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: "Categories", // pastikan table Category sudah ada
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()"),
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("Products");
   },

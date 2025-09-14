@@ -1,25 +1,24 @@
-import React, { useState } from "react";
 import "../css/Product.css";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} from "../features/productSlice";
 
 export default function Product() {
-  // Dummy data 1000 produk
-  const categories = ["Minuman", "Makanan", "Snack", "Kopi", "Teh", "Rokok"];
-
-  const products = Array.from({ length: 1000 }, (_, i) => ({
-    id: i + 1,
-    code: `P-${String(i + 1).padStart(4, "0")}`,
-    name: `Produk ${i + 1}`,
-    desc: `Deskripsi singkat produk ${i + 1}`,
-    stock: Math.floor(Math.random() * 200) + 1,
-    price: Math.floor(Math.random() * 50000) + 5000,
-    sellPrice: Math.floor(Math.random() * 70000) + 10000,
-    category: categories[Math.floor(Math.random() * categories.length)],
-  }));
-
   // State
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const itemsPerPage = 10;
+  const dispatch = useDispatch();
+  const { products, status, error } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   // 🔎 Filter produk berdasarkan pencarian (code & name)
   const filteredProducts = products.filter(
@@ -46,7 +45,6 @@ export default function Product() {
       <div className="header">
         <h1>Daftar Produk</h1>
         <div className="actions">
-          {/* 🔎 Search input */}
           <input
             type="text"
             placeholder="Cari kode atau nama produk..."
@@ -61,65 +59,94 @@ export default function Product() {
         </div>
       </div>
 
-      {/* Table Produk */}
-      <table className="product-table">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Kode Produk</th>
-            <th>Nama Produk</th>
-            <th>Deskripsi</th>
-            <th>Stok</th>
-            <th>Harga Modal</th>
-            <th>Harga Jual</th>
-            <th>Kategori</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentProducts.length > 0 ? (
-            currentProducts.map((p, index) => (
-              <tr key={p.id}>
-                <td>{indexOfFirst + index + 1}</td>
-                <td>{p.code}</td>
-                <td>{p.name}</td>
-                <td>{p.desc}</td>
-                <td>{p.stock}</td>
-                <td>Rp {p.price.toLocaleString("id-ID")}</td>
-                <td>Rp {p.sellPrice.toLocaleString("id-ID")}</td>
-                <td>{p.category}</td>
-                <td>
-                  <button className="btn-edit">Edit</button>
-                  <button className="btn-delete">Hapus</button>
+      <div className="table-container">
+        <table className="product-table">
+          <colgroup>
+            <col style={{ width: "50px" }} /> {/* No */}
+            <col style={{ width: "120px" }} /> {/* Kode Produk */}
+            <col style={{ width: "160px" }} /> {/* Nama Produk */}
+            <col style={{ width: "220px" }} /> {/* Deskripsi */}
+            <col style={{ width: "120px" }} /> {/* Harga Modal */}
+            <col style={{ width: "120px" }} /> {/* Harga Jual */}
+            <col style={{ width: "100px" }} /> {/* Diskon */}
+            <col style={{ width: "100px" }} /> {/* Margin */}
+            <col style={{ width: "100px" }} /> {/* Stok */}
+            <col style={{ width: "100px" }} /> {/* Unit */}
+            <col style={{ width: "160px" }} /> {/* Tanggal Kadaluarsa */}
+            <col style={{ width: "140px" }} /> {/* Kategori */}
+            <col style={{ width: "120px" }} /> {/* Status */}
+            <col style={{ width: "160px" }} /> {/* Aksi */}
+          </colgroup>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Kode Produk</th>
+              <th>Nama Produk</th>
+              <th>Deskripsi</th>
+              <th>Harga Modal</th>
+              <th>Harga Jual</th>
+              <th>Diskon</th>
+              <th>Margin</th>
+              <th>Stok</th>
+              <th>Unit</th>
+              <th>Tanggal Kadaluarsa</th>
+              <th>Kategori</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentProducts.length > 0 ? (
+              currentProducts.map((p, index) => (
+                <tr key={p.id}>
+                  <td style={{ textAlign: "center" }}>
+                    {indexOfFirst + index + 1}
+                  </td>
+                  <td>{p.code}</td>
+                  <td>{p.name}</td>
+                  <td>{p.description}</td>
+                  <td>Rp {p.priceBuy.toLocaleString("id-ID")}</td>
+                  <td>Rp {p.priceSell.toLocaleString("id-ID")}</td>
+                  <td>{p.diskon}</td>
+                  <td>{p.margin}</td>
+                  <td>{p.stock}</td>
+                  <td>{p.unit}</td>
+                  <td>{p.expiryDate}</td>
+                  <td>{p.category}</td>
+                  <td>{p.status}</td>
+                  <td className="aksi-cell">
+                    <button className="btn-update">Edit</button>
+                    <button className="btn-delete">Hapus</button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="14" className="no-data">
+                  ❌ Produk tidak ditemukan
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="9" className="no-data">
-                ❌ Produk tidak ditemukan
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      </div>
 
       {/* Pagination */}
       <div className="pagination">
         <button
           onClick={() => goToPage(currentPage - 1)}
-          disabled={currentPage === 1}
+          disabled={currentPage === 1 || currentProducts.length === 0}
         >
-          ⬅ Prev
+          ⬅ Sebelumnya
         </button>
         <span>
           Halaman {currentPage} dari {totalPages}
         </span>
         <button
           onClick={() => goToPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages || currentProducts.length === 0}
         >
-          Next ➡
+          Selanjutnya ➡
         </button>
       </div>
     </div>

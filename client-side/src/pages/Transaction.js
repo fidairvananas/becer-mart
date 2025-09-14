@@ -50,7 +50,7 @@ export default function Transaction() {
           </div>
           <div className="field-group">
             <label>Kasir</label>
-            <input type="text" value="Mohammad Nur Fawaiq" readOnly />
+            <input type="text" className="form-control-sm" />
           </div>
           <div className="field-group">
             <label>Customer</label>

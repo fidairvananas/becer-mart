@@ -44,11 +44,19 @@
   transform: translateY(-2px);
 }
 
+/* Wrapper scroll */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* hanya tabel yang bisa scroll */
+  border-radius: 10px;
+}
+
 /* Table Produk */
 .product-table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  min-width: 1400px; /* biar kalau kolom banyak, muncul scroll */
+  border-collapse: collapse;
+  table-layout: fixed; /* kolom fix sesuai colgroup */
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -57,17 +65,38 @@
 
 .product-table th,
 .product-table td {
-  padding: 14px 16px;
-  text-align: left;
+  padding: 12px 14px;
   font-size: 14px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+  text-align: left;
+  word-wrap: break-word; /* bungkus teks */
+  white-space: normal; /* biar bisa turun ke bawah */
 }
 
 .product-table th {
   background: #6f4e37;
   color: #fff;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Aksi cell (tombol sejajar) */
+.aksi-cell {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  white-space: nowrap; /* cegah tombol wrap */
+}
+
+.btn-update,
+.btn-delete {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .product-table tr:nth-child(even) td {
@@ -77,40 +106,6 @@
 .product-table tr:hover td {
   background: #c19a6b;
   transition: background 0.3s ease;
-}
-
-/* Tombol aksi */
-.btn-edit,
-.btn-delete {
-  border: none;
-  padding: 7px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  margin-right: 5px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-edit {
-  background: #8d6e63;
-  color: #fff;
-}
-
-.btn-edit:hover {
-  background: #6d4c41;
-  transform: scale(1.05);
-}
-
-.btn-delete {
-  background: #efebe9;
-  color: #3e2723;
-  border: 1px solid #d7ccc8;
-}
-
-.btn-delete:hover {
-  background: #d7ccc8;
-  transform: scale(1.05);
 }
 
 /* Pagination */
@@ -150,4 +145,10 @@
 .pagination span {
   color: #4b3621;
   font-weight: 500;
+}
+
+.no-data {
+  text-align: center !important;
+  font-weight: 600;
+  font-size: larger !important;
 }

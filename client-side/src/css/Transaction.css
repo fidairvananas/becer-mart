@@ -103,25 +103,6 @@ h2 {
   background: #f3e5d7;
 }
 
-.btn-update {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 4px 8px;
-  margin-right: 5px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.btn-delete {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 4px 8px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
 .trans-footer {
   display: flex;
   justify-content: space-between;
@@ -197,7 +178,8 @@ h2 {
 }
 
 .date-input.with-icon {
-  width: 100%;
+  width: 65%;
+  height: 34px;
   padding: 10px 40px 10px 12px; /* tambahin ruang kanan buat icon */
   border: 1px solid #d1c7b7;
   border-radius: 8px;
@@ -216,11 +198,11 @@ h2 {
 
 .calendar-icon {
   position: absolute;
-  right: 12px;
+  right: 95px;
   top: 50%;
   transform: translateY(-50%);
   color: #8b5e3c;
-  font-size: 16px;
+  font-size: 18px;
   pointer-events: none; /* biar klik tetap ke input */
 }
 
