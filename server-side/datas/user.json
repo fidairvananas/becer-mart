@@ -1,0 +1,22 @@
+[
+    {
+        "name": "sysadmin1",
+        "email": "sysadmin@gmail.com",
+        "password": "password123",
+        "roleId": "0afcb9da-67e1-4674-a87b-b0e502d763d2",
+        "image": "",
+        "no_tlp": "085741807439",
+        "gender": "laki-laki",
+        "address": "jl. h. mencong 1, ciledug, tangerang"
+    },
+    {
+        "name": "maker",
+        "email": "maker@gmail.com",
+        "password": "password123",
+        "roleId": "83fdedbb-8223-4b07-9184-f1a98e94d04f",
+        "image": "",
+        "no_tlp": "085741807439",
+        "gender": "laki-laki",
+        "address": "jl. h. mencong 1, ciledug, tangerang"
+    }
+]

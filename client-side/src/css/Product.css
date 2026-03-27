@@ -1,0 +1,154 @@
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #3e2723;
+}
+/* Search input */
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 12px;
+  margin-right: 10px;
+  transition: border 0.3s;
+}
+
+.search-input:focus {
+  border-color: #795548; /* cokelat kopi */
+}
+
+.btn-add {
+  background: #6f4e37;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-add:hover {
+  background: #5a3c2a;
+  transform: translateY(-2px);
+}
+
+/* Wrapper scroll */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* hanya tabel yang bisa scroll */
+  border-radius: 10px;
+}
+
+/* Table Produk */
+.product-table {
+  width: 100%;
+  min-width: 1400px; /* biar kalau kolom banyak, muncul scroll */
+  border-collapse: collapse;
+  table-layout: fixed; /* kolom fix sesuai colgroup */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.product-table th,
+.product-table td {
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+  text-align: left;
+  word-wrap: break-word; /* bungkus teks */
+  white-space: normal; /* biar bisa turun ke bawah */
+}
+
+.product-table th {
+  background: #6f4e37;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Aksi cell (tombol sejajar) */
+.aksi-cell {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  white-space: nowrap; /* cegah tombol wrap */
+}
+
+.btn-update,
+.btn-delete {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.product-table tr:nth-child(even) td {
+  background: #f0e6dc;
+}
+
+.product-table tr:hover td {
+  background: #c19a6b;
+  transition: background 0.3s ease;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.pagination button {
+  background: #6f4e37;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.pagination button:disabled {
+  background: #a1887f;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #5a3c2a;
+  transform: translateY(-2px);
+}
+
+.pagination span {
+  color: #4b3621;
+  font-weight: 500;
+}
+
+.no-data {
+  text-align: center !important;
+  font-weight: 600;
+  font-size: larger !important;
+}

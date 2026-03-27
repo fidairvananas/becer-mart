@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "hiburan"
+    },
+    {
+        "id": 2,
+        "name": "gaya hidup"
+    },
+    {
+        "id": 3,
+        "name": "otomotif"
+    },
+    {
+        "id": 4,
+        "name": "teknologi"
+    },
+    {
+        "id": 6,
+        "name": "olahraga"
+    },
+    {
+        "id": 7,
+        "name": "ekonomi"
+    },
+    {
+        "id": 8,
+        "name": "politik"
+    }
+]

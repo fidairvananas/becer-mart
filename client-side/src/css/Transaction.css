@@ -1,0 +1,225 @@
+.transaction-container {
+  padding: 20px;
+  background: #fdfaf6;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #4b2e2e;
+}
+
+.trans-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  background: #fff8f2;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.field-group {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+  padding: 6px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.trans-card-container {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.trans-card {
+  flex: 1;
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.invoice-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: end;
+}
+
+.invoice-card h1 {
+  color: #8b5e3c;
+  margin: 0;
+  font-size: 80px !important;
+}
+
+.btn-add {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #6f4e37;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background: #5a3e2c;
+}
+
+/* Table */
+.trans-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.trans-table th,
+.trans-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.trans-table th {
+  background: #6f4e37;
+  color: white;
+}
+
+.trans-table tr:hover {
+  background: #f3e5d7;
+}
+
+.trans-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.trans-footer div {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.trans-footer label {
+  margin-top: 5px;
+}
+
+.trans-footer input,
+.trans-footer textarea {
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+.trans-actions {
+  text-align: right;
+}
+
+.btn-cancel {
+  background: #e67e22;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-process {
+  background: #27ae60;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.datepicker-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.date-input {
+  width: 200px;
+  padding: 10px 35px 10px 12px;
+  border: 1px solid #d1c7b7;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.date-input:focus {
+  border-color: #8b5e3c;
+  outline: none;
+  box-shadow: 0 0 5px rgba(139, 94, 60, 0.5);
+}
+
+.datepicker-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 220px; /* biar fix ukurannya */
+}
+
+.date-input.with-icon {
+  width: 65%;
+  height: 34px;
+  padding: 10px 40px 10px 12px; /* tambahin ruang kanan buat icon */
+  border: 1px solid #d1c7b7;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.date-input.with-icon:focus {
+  border-color: #8b5e3c;
+  outline: none;
+  box-shadow: 0 0 5px rgba(139, 94, 60, 0.5);
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 95px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8b5e3c;
+  font-size: 18px;
+  pointer-events: none; /* biar klik tetap ke input */
+}
+
+.react-datepicker {
+  font-size: 14px !important;
+  border-radius: 8px !important;
+  border: 1px solid #d1c7b7 !important;
+}
+
+.react-datepicker__header {
+  background-color: #f8f4ef !important;
+  border-bottom: 1px solid #d1c7b7 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #8b5e3c !important;
+  color: white !important;
+  border-radius: 50% !important;
+}

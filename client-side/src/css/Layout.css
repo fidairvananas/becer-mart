@@ -1,0 +1,29 @@
+/* Container utama */
+.app-container {
+  display: flex;
+  justify-content: center; /* center horisontal */
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff; /* cream background di luar */
+}
+
+/* Layout wrapper tetap 1200px */
+.layout {
+  display: flex;
+  width: 1920px;
+  height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* opsional */
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Konten utama */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+  width: 1920px;
+  background: #fff;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+}
